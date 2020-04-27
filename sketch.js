@@ -1,21 +1,25 @@
-var sun;
-var mercury,venus,earth,mars,jupiter,saturn,uranus,neptune;
-
+var fixedRect,movingRect;
 
 function setup() {
-  createCanvas(1200,800);
-  sun=createSprite(50,300,200,200);
-  mercury=createSprite(200,350,20,20);
-  venus=createSprite(300,350,30,30);
-  earth=createSprite(450,350,50,50);
-  mars=createSprite(600,350,40,40);
-  jupiter=createSprite(750,350,150,150);
-  saturn=createSprite(900,350,100,100);
-  uranus=createSprite(1000,350,65,65);
-  neptune=createSprite(1150,350,65,65);
+  createCanvas(800,400);
+ fixedRect=createSprite(400, 200, 50, 50);
+ movingRect=createSprite(0,0,80,40);
+ fixedRect.shapeColor="blue";
+ movingRect.shapeColor="blue";
 }
 
 function draw() {
-  background(0); 
+  background(0);  
+  movingRect.x=mouseX;
+  movingRect.y=mouseY;
+if(movingRect.x-fixedRect.x<movingRect.width/2+fixedRect.width/2&&
+  fixedRect.x-movingRect.x<movingRect.width/2+fixedRect.width/2 ){
+    movingRect.shapeColor="red";
+    fixedRect.shapeColor="red";
+  }
+  else{
+    movingRect.shapeColor="blue";
+    fixedRect.shapeColor="blue";
+  }
   drawSprites();
 }
